@@ -1,3 +1,33 @@
+-- // Tables
+local Atlanta = {
+    connections = {},   
+    Safe = false,
+    Locals = {
+        PartSizes = {
+            ["Head"] = Vector3.new(2, 1, 1),
+            ["Torso"] = Vector3.new(2, 2, 1),
+            ["Left Arm"] = Vector3.new(1, 2, 1),
+            ["Right Arm"] = Vector3.new(1, 2, 1),
+            ["Left Leg"] = Vector3.new(1, 2, 1),
+            ["Right Leg"] = Vector3.new(1, 2, 1)
+        }
+    }
+}
+local Visuals = {
+    Bases = {},
+    Base = {}
+}
+local Color = {}
+local Utility = {}
+local Math = {
+    Conversions = {}
+}
+local Priorities = {
+    2794160137,
+}
+-- // Flags
+Flags = getgenv().ESP
+--
 local ReplicatedStorage, RunService, Workspace, Players = game:GetService("ReplicatedStorage"), game:GetService("RunService"), game:GetService("Workspace"), game:GetService("Players")
 local Client = Players.LocalPlayer
 local SetMetatable, GetUpvalue = debug.setmetatable, debug.getupvalue
@@ -19,7 +49,8 @@ do -- // Utility
         return connection
     end
     --
-    function Utility:ClampString(String, Length)
+    function Utility:ClampString(String, Length, Font)
+        local Font = (Font or 2)
         local Split = String:split("\n")
         --
         local Clamped = ""
@@ -363,6 +394,7 @@ do -- // Visuals
                     SetRenderProperty(Self.Renders.Name, "Size", 13)
                     SetRenderProperty(Self.Renders.Name, "Center", true)
                     SetRenderProperty(Self.Renders.Name, "Outline", true)
+                    SetRenderProperty(Self.Renders.Name, "Font", 2)
                     SetRenderProperty(Self.Renders.Name, "Visible", false)
                 end
                 --
@@ -391,6 +423,7 @@ do -- // Visuals
                     SetRenderProperty(Self.Renders.HealthBarValue, "Size", 13)
                     SetRenderProperty(Self.Renders.HealthBarValue, "Center", false)
                     SetRenderProperty(Self.Renders.HealthBarValue, "Outline", true)
+                    SetRenderProperty(Self.Renders.HealthBarValue, "Font", 2)
                     SetRenderProperty(Self.Renders.HealthBarValue, "Visible", false)
                 end
                 --
@@ -398,6 +431,7 @@ do -- // Visuals
                     SetRenderProperty(Self.Renders.Flags, "Size", 13)
                     SetRenderProperty(Self.Renders.Flags, "Center", false)
                     SetRenderProperty(Self.Renders.Flags, "Outline", true)
+                    SetRenderProperty(Self.Renders.Flags, "Font", 2)
                     SetRenderProperty(Self.Renders.Flags, "Visible", false)
                 end
                 --
@@ -405,6 +439,7 @@ do -- // Visuals
                     SetRenderProperty(Self.Renders.Distance, "Size", 13)
                     SetRenderProperty(Self.Renders.Distance, "Center", true)
                     SetRenderProperty(Self.Renders.Distance, "Outline", true)
+                    SetRenderProperty(Self.Renders.Distance, "Font", 2)
                     SetRenderProperty(Self.Renders.Distance, "Visible", false)
                 end
                 --
@@ -412,6 +447,7 @@ do -- // Visuals
                     SetRenderProperty(Self.Renders.Weapon, "Size", 13)
                     SetRenderProperty(Self.Renders.Weapon, "Center", true)
                     SetRenderProperty(Self.Renders.Weapon, "Outline", true)
+                    SetRenderProperty(Self.Renders.Weapon, "Font", 2)
                     SetRenderProperty(Self.Renders.Weapon, "Visible", false)
                 end
                 --
